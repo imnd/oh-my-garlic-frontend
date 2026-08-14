@@ -25,7 +25,8 @@ async function apiCall<T>(endpoint: string, method = 'GET', body: any = null): P
     if (!res.ok) {
       throw new Error(await res.text());
     }
-    return await res.json() as T;
+    const text = await res.text();
+    return text ? (JSON.parse(text) as T) : null;
   } catch (err: any) {
     console.error(err);
     throw new Error(err.message || 'API Communication Error');
