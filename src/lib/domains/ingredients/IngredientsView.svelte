@@ -134,8 +134,8 @@
             />
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="new-price">Average Price ($)</label>
+            <div class="form-group">
+            <label class="form-label" for="new-price">Average Price (₹)</label>
             <input
               id="new-price"
               type="number"
@@ -202,7 +202,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="edit-price">Average Price ($)</label>
+            <label class="form-label" for="edit-price">Average Price (₹)</label>
             <input
               id="edit-price"
               type="number"
