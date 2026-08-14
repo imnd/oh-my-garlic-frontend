@@ -5,6 +5,6 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 export default defineConfig({
   plugins: [svelte()],
   preview: {
-    allowedHosts: ['oh-my-garlic-frontend.onrender.com']
+    allowedHosts: (import.meta.env.VITE_ALLOWED_HOSTS || '').split(',').filter(Boolean)
   }
 })
