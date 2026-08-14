@@ -10,27 +10,27 @@
   <div class="grid-3" style="margin-bottom: 2rem;">
     <div class="glass-card pl-card shadow-emerald">
       <div class="pl-label">Gross Revenue</div>
-      <div class="pl-value text-success">${profitLoss.grossSalesRevenue}</div>
+      <div class="pl-value text-success">₹{profitLoss.grossSalesRevenue}</div>
     </div>
     <div class="glass-card pl-card shadow-violet">
       <div class="pl-label">Cost of Goods Sold (COGS)</div>
-      <div class="pl-value">${profitLoss.cogs}</div>
+      <div class="pl-value">₹{profitLoss.cogs}</div>
     </div>
     <div class="glass-card pl-card shadow-violet">
       <div class="pl-label">Gross Profit</div>
-      <div class="pl-value text-emerald">${profitLoss.grossProfit}</div>
+      <div class="pl-value text-emerald">₹{profitLoss.grossProfit}</div>
     </div>
     <div class="glass-card pl-card shadow-danger">
       <div class="pl-label">Operational Losses (Waste / Trials)</div>
-      <div class="pl-value text-danger">${profitLoss.operationalLoss}</div>
+      <div class="pl-value text-danger">₹{profitLoss.operationalLoss}</div>
     </div>
     <div class="glass-card pl-card shadow-violet">
       <div class="pl-label">Consumable Direct Expenses</div>
-      <div class="pl-value">${profitLoss.directExpenses}</div>
+      <div class="pl-value">₹{profitLoss.directExpenses}</div>
     </div>
     <div class="glass-card pl-card shadow-success">
       <div class="pl-label">Net Profit / Loss</div>
-      <div class="pl-value {profitLoss.netProfit < 0 ? 'text-danger' : 'text-success'}">${profitLoss.netProfit}</div>
+      <div class="pl-value {profitLoss.netProfit < 0 ? 'text-danger' : 'text-success'}">₹{profitLoss.netProfit}</div>
     </div>
   </div>
 {/if}

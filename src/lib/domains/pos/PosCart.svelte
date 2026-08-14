@@ -31,7 +31,7 @@
         <div class="cart-item flex-between">
           <div>
             <div class="cart-item-name">{mItem.name}</div>
-            <div class="cart-item-price">${Number(mItem.price).toFixed(2)} each</div>
+            <div class="cart-item-price">₹{Number(mItem.price).toFixed(2)} each</div>
           </div>
           <div class="cart-qty-ctrl">
             <button class="btn-qty" onclick={() => onQuantityChange(mItem.id, -1)}>-</button>
@@ -49,7 +49,7 @@
   <div class="cart-summary">
     <div class="flex-between">
       <span>Total Bill:</span>
-      <strong class="total-text">${orderTotal.toFixed(2)}</strong>
+      <strong class="total-text">₹{orderTotal.toFixed(2)}</strong>
     </div>
 
     <div class="form-group" style="margin-top: 1rem;">

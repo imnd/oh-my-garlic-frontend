@@ -20,7 +20,7 @@
           <h4>{item.name}</h4>
           <div>
             <span class="badge badge-violet">{item.category}</span>
-            <span class="badge badge-emerald" style="margin-left: 0.5rem; font-size: 0.875rem;">Retail Price: ${Number(item.price).toFixed(2)}</span>
+            <span class="badge badge-emerald" style="margin-left: 0.5rem; font-size: 0.875rem;">Retail Price: ₹{Number(item.price).toFixed(2)}</span>
           </div>
         </div>
 

@@ -33,9 +33,9 @@
               <line x1="40" y1={height - 25} x2={width - 10} y2={height - 25} stroke="rgba(255,255,255,0.1)" />
               
               <!-- Y Axis Labels -->
-              <text x="5" y="15" fill="var(--text-muted)" font-size="9">${maxPrice.toFixed(1)}</text>
-              <text x="5" y={height / 2 + 3} fill="var(--text-muted)" font-size="9">${((maxPrice + minPrice) / 2).toFixed(1)}</text>
-              <text x="5" y={height - 21} fill="var(--text-muted)" font-size="9">${minPrice.toFixed(1)}</text>
+              <text x="5" y="15" fill="var(--text-muted)" font-size="9">₹{maxPrice.toFixed(1)}</text>
+              <text x="5" y={height / 2 + 3} fill="var(--text-muted)" font-size="9">₹{((maxPrice + minPrice) / 2).toFixed(1)}</text>
+              <text x="5" y={height - 21} fill="var(--text-muted)" font-size="9">₹{minPrice.toFixed(1)}</text>
 
               <!-- Plot path -->
               <path d={pathD} fill="none" stroke="var(--accent-secondary)" stroke-width="2" />
@@ -43,7 +43,7 @@
               <!-- Dots & tooltips -->
               {#each points as pt}
                 <circle cx={pt.x} cy={pt.y} r="4" fill="var(--accent-primary)">
-                  <title>{pt.date}: ${pt.price.toFixed(2)}</title>
+                  <title>{pt.date}: ₹{pt.price.toFixed(2)}</title>
                 </circle>
               {/each}
             </svg>

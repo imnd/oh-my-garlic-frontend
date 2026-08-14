@@ -47,7 +47,7 @@
         <button class="pos-item-button glass-card" onclick={() => addToCart(item)}>
           <div class="pos-item-cat">{item.category}</div>
           <div class="pos-item-name">{item.name}</div>
-          <div class="pos-item-price">${Number(item.price).toFixed(2)}</div>
+          <div class="pos-item-price">₹{Number(item.price).toFixed(2)}</div>
         </button>
       {/each}
       {#if menuItems.length === 0}

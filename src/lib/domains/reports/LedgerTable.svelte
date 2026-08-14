@@ -28,7 +28,7 @@
             <td class="text-success">+{row.intake}</td>
             <td class="text-danger">-{row.outflow}</td>
             <td><strong>{row.endingBalance}</strong></td>
-            <td>${(row.endingBalance * row.averagePrice).toFixed(2)}</td>
+            <td>₹{(row.endingBalance * row.averagePrice).toFixed(2)}</td>
           </tr>
         {/each}
         {#if ledger.length === 0}
