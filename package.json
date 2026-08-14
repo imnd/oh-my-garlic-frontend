@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "svelte-check && vite build",
-    "preview": "vite preview --host 0.0.0.0 --port 80"
+    "preview": "vite preview --host 0.0.0.0 --port $PORT"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
