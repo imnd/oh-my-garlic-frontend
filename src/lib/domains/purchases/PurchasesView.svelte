@@ -106,7 +106,6 @@
           <th>Unit Cost (₹)</th>
           <th>Total Cost (₹)</th>
           <th>Payment Type</th>
-          <th>Notes</th>
         </tr>
       </thead>
       <tbody>
@@ -126,12 +125,11 @@
             <td>{Math.round(Number(purch.unitPrice))}</td>
             <td><strong>{Math.round(Number(purch.totalCost))}</strong></td>
             <td><span class="badge badge-blue">{purch.paymentMethod}</span></td>
-            <td style="color: var(--text-secondary);">{purch.comments || '—'}</td>
           </tr>
         {/each}
         {#if filteredPurchases.length === 0}
           <tr>
-            <td colspan="8" style="text-align: center; color: var(--text-muted)">No purchase history recorded.</td>
+            <td colspan="7" style="text-align: center; color: var(--text-muted)">No purchase history recorded.</td>
           </tr>
         {/if}
       </tbody>
