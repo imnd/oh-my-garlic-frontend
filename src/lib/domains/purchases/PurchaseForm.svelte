@@ -19,7 +19,7 @@
   let unitPrice = $state('');
   let paymentMethod = $state('Cash from register');
   let comments = $state('');
-  let autoCalcUnitPrice = $state(true);
+  let autoCalcUnitPrice = $state(false);
 
   async function handleSubmit(e: SubmitEvent) {
     e.preventDefault();
