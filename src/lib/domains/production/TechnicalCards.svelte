@@ -38,8 +38,8 @@
               {#each item.recipeComponents as rc}
                 <tr>
                   <td>{rc.ingredient?.name}</td>
-                  <td>{rc.grossWeight} {rc.ingredient?.unit}</td>
-                  <td>{rc.netWeight} {rc.ingredient?.unit}</td>
+                  <td>{Number(rc.grossWeight).toFixed(2)} {rc.ingredient?.unit}</td>
+                  <td>{Number(rc.netWeight).toFixed(2)} {rc.ingredient?.unit}</td>
                   <td style="color: var(--text-secondary);">{rc.wastePercentage}%</td>
                 </tr>
               {/each}

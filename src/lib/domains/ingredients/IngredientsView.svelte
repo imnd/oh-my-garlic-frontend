@@ -127,7 +127,7 @@
             <input
               id="new-stock"
               type="number"
-              step="0.0001"
+              step="0.01"
               min="0"
               class="form-input"
               bind:value={stock}
@@ -194,7 +194,7 @@
             <input
               id="edit-stock"
               type="number"
-              step="0.0001"
+              step="0.01"
               min="0"
               class="form-input"
               bind:value={editStock}
@@ -260,7 +260,7 @@
             <th>Product</th>
             <th>Category</th>
             <th>Stock Level</th>
-            <th>Avg Price</th>
+            <th>Avg Price (₹)</th>
             <th style="width: 150px; text-align: right;">Actions</th>
           </tr>
         </thead>
@@ -275,25 +275,29 @@
               </td>
               <td>
                 <span class={ing.stock < 0 ? 'text-danger' : ing.stock === 0 ? 'text-warning' : 'text-success'}>
-                  {ing.stock} {ing.unit}
+                  {Number(ing.stock).toFixed(2)} {ing.unit}
                 </span>
               </td>
-              <td>${Number(ing.averagePrice).toFixed(2)}</td>
+              <td>{Number(ing.averagePrice).toFixed(2)}</td>
               <td style="text-align: right;">
                 <div style="display: inline-flex; gap: 0.4rem;">
                   <button 
                     class="btn btn-secondary btn-sm" 
                     onclick={() => startEdit(ing)}
                     style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"
+                    title="Edit"
+                    aria-label="Edit"
                   >
-                    ✏️ Edit
+                    ✏️ <span class="btn-label">Edit</span>
                   </button>
                   <button 
                     class="btn btn-danger btn-sm" 
                     onclick={() => handleDelete(ing.id, ing.name)}
                     style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: var(--accent-danger); color: #fff;"
+                    title="Delete"
+                    aria-label="Delete"
                   >
-                    🗑️ Delete
+                    🗑️ <span class="btn-label">Delete</span>
                   </button>
                 </div>
               </td>
@@ -311,3 +315,11 @@
     </div>
   </section>
 </div>
+
+<style>
+  @media (max-width: 600px) {
+    .btn-label {
+      display: none;
+    }
+  }
+</style>

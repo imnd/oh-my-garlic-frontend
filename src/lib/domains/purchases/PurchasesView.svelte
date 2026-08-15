@@ -103,8 +103,8 @@
           <th>Date</th>
           <th>Ingredient</th>
           <th>Quantity</th>
-          <th>Unit Cost</th>
-          <th>Total Cost</th>
+          <th>Unit Cost (₹)</th>
+          <th>Total Cost (₹)</th>
           <th>Payment Type</th>
           <th>Notes</th>
         </tr>
@@ -122,9 +122,9 @@
             </td>
             <td>{new Date(purch.dateTime).toLocaleDateString()}</td>
             <td><strong>{purch.ingredient?.name || 'Unknown'}</strong></td>
-            <td>{purch.quantity} {purch.ingredient?.unit}</td>
-            <td>₹{Number(purch.unitPrice).toFixed(2)}</td>
-            <td><strong>₹{Number(purch.totalCost).toFixed(2)}</strong></td>
+            <td>{Number(purch.quantity).toFixed(2)} {purch.ingredient?.unit}</td>
+            <td>{Number(purch.unitPrice).toFixed(2)}</td>
+            <td><strong>{Number(purch.totalCost).toFixed(2)}</strong></td>
             <td><span class="badge badge-blue">{purch.paymentMethod}</span></td>
             <td style="color: var(--text-secondary);">{purch.comments || '—'}</td>
           </tr>

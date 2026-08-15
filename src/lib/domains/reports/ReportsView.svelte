@@ -25,8 +25,8 @@
           <tr>
             <th>Dish Name</th>
             <th>Category</th>
-            <th>Retail Price</th>
-            <th>Ingredient Cost</th>
+            <th>Retail Price (₹)</th>
+            <th>Ingredient Cost (₹)</th>
             <th>Margin (₹)</th>
             <th>Margin (%)</th>
           </tr>
@@ -37,9 +37,9 @@
               <tr>
                 <td><strong>{item.name}</strong></td>
                 <td><span class="badge badge-violet">{item.category}</span></td>
-                <td>₹{Number(item.price).toFixed(2)}</td>
-                <td>₹{Number(item.cost).toFixed(2)}</td>
-                <td class="text-success">₹{Number(item.margin).toFixed(2)}</td>
+                <td>{Number(item.price).toFixed(2)}</td>
+                <td>{Number(item.cost).toFixed(2)}</td>
+                <td class="text-success">{Number(item.margin).toFixed(2)}</td>
                 <td>
                   <span class="badge {item.marginPercent > 60 ? 'badge-emerald' : item.marginPercent > 40 ? 'badge-violet' : 'badge-danger'}">
                     {item.marginPercent}%

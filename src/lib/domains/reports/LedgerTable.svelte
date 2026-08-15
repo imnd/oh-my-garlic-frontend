@@ -17,18 +17,18 @@
           <th>Intake (+)</th>
           <th>Outflow (-)</th>
           <th>Ending Bal</th>
-          <th>Current Val</th>
+          <th>Current Val (₹)</th>
         </tr>
       </thead>
       <tbody>
         {#each ledger as row}
           <tr>
             <td><strong>{row.name}</strong> <span style="font-size: 0.75rem; color: var(--text-muted)">({row.unit})</span></td>
-            <td>{row.startingBalance}</td>
-            <td class="text-success">+{row.intake}</td>
-            <td class="text-danger">-{row.outflow}</td>
-            <td><strong>{row.endingBalance}</strong></td>
-            <td>₹{(row.endingBalance * row.averagePrice).toFixed(2)}</td>
+            <td>{Number(row.startingBalance).toFixed(2)}</td>
+            <td class="text-success">+{Number(row.intake).toFixed(2)}</td>
+            <td class="text-danger">-{Number(row.outflow).toFixed(2)}</td>
+            <td><strong>{Number(row.endingBalance).toFixed(2)}</strong></td>
+            <td>{(row.endingBalance * row.averagePrice).toFixed(2)}</td>
           </tr>
         {/each}
         {#if ledger.length === 0}

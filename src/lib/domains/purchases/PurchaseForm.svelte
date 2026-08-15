@@ -60,7 +60,7 @@
           <select id="purch-ingredient" class="form-select" bind:value={ingredientId} required>
             <option value="">-- Choose Ingredient --</option>
             {#each ingredients as ing}
-              <option value={ing.id}>{ing.name} ({ing.unit}) [Stock: {ing.stock}]</option>
+              <option value={ing.id}>{ing.name} ({ing.unit}) [Stock: {Number(ing.stock).toFixed(2)}]</option>
             {/each}
           </select>
         </div>
@@ -70,7 +70,7 @@
       </div>
       <div class="form-group">
         <label class="form-label" for="purch-qty">Quantity *</label>
-        <input id="purch-qty" type="number" step="0.0001" class="form-input" placeholder="e.g. 5.5" bind:value={quantity} required />
+        <input id="purch-qty" type="number" step="0.01" class="form-input" placeholder="e.g. 5.5" bind:value={quantity} required />
       </div>
       <div class="form-group">
         <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
