@@ -18,6 +18,21 @@
 
   let showModal = $state(false);
   let selectedIds = $state<Set<number>>(new Set());
+  let startDate = $state('');
+  let endDate = $state('');
+
+  const filteredPurchases = $derived(
+    purchases.filter((p) => {
+      const date = new Date(p.dateTime);
+      if (startDate && date < new Date(startDate)) return false;
+      if (endDate) {
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        if (date > end) return false;
+      }
+      return true;
+    })
+  );
 
   function toggleSelect(id: number) {
     const next = new Set(selectedIds);
@@ -30,15 +45,15 @@
   }
 
   function toggleSelectAll() {
-    if (selectedIds.size === purchases.length) {
+    if (selectedIds.size === filteredPurchases.length) {
       selectedIds = new Set();
     } else {
-      selectedIds = new Set(purchases.map((p) => p.id));
+      selectedIds = new Set(filteredPurchases.map((p) => p.id));
     }
   }
 
   const selectedTotal = $derived(
-    purchases
+    filteredPurchases
       .filter((p) => selectedIds.has(p.id))
       .reduce((sum, p) => sum + Number(p.totalCost), 0)
   );
@@ -58,7 +73,15 @@
 <section class="glass-card" style="margin-top: 1.5rem;">
   <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
     <h3 style="margin: 0;">Recent Purchases Ledger</h3>
-    <div style="display: flex; align-items: center; gap: 0.75rem;">
+    <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <label class="form-label" style="margin: 0; white-space: nowrap;">From</label>
+        <input type="date" class="form-input" style="width: auto;" bind:value={startDate} />
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <label class="form-label" style="margin: 0; white-space: nowrap;">To</label>
+        <input type="date" class="form-input" style="width: auto;" bind:value={endDate} />
+      </div>
       {#if selectedCount > 0}
         <span class="badge badge-blue">Selected: {selectedCount}</span>
         <span class="badge badge-green">Sum: ₹{selectedTotal.toFixed(2)}</span>
@@ -72,7 +95,7 @@
           <th style="width: 40px;">
             <input 
               type="checkbox" 
-              checked={selectedIds.size === purchases.length && purchases.length > 0}
+              checked={selectedIds.size === filteredPurchases.length && filteredPurchases.length > 0}
               onchange={toggleSelectAll}
               aria-label="Select all purchases"
             />
@@ -87,7 +110,7 @@
         </tr>
       </thead>
       <tbody>
-        {#each purchases as purch}
+        {#each filteredPurchases as purch}
           <tr class:row-selected={selectedIds.has(purch.id)}>
             <td>
               <input 
@@ -106,7 +129,7 @@
             <td style="color: var(--text-secondary);">{purch.comments || '—'}</td>
           </tr>
         {/each}
-        {#if purchases.length === 0}
+        {#if filteredPurchases.length === 0}
           <tr>
             <td colspan="8" style="text-align: center; color: var(--text-muted)">No purchase history recorded.</td>
           </tr>
