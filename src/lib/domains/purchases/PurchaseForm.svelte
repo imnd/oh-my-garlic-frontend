@@ -29,9 +29,9 @@
     let finalUnitPrice = 0;
 
     if (autoCalcUnitPrice) {
-      finalUnitPrice = parseFloat(totalCost) / qty;
+      finalUnitPrice = Math.round(parseFloat(totalCost) / qty);
     } else {
-      finalUnitPrice = parseFloat(unitPrice);
+      finalUnitPrice = Math.round(parseFloat(unitPrice));
     }
 
     await onSavePurchase({
@@ -81,9 +81,9 @@
         </label>
 
         {#if autoCalcUnitPrice}
-          <input type="number" step="0.01" class="form-input" placeholder="Enter total cost of item batch" bind:value={totalCost} required />
+          <input type="number" step="1" class="form-input" placeholder="Enter total cost of item batch" bind:value={totalCost} required />
         {:else}
-          <input type="number" step="0.01" class="form-input" placeholder="Enter unit price" bind:value={unitPrice} required />
+          <input type="number" step="1" class="form-input" placeholder="Enter unit price" bind:value={unitPrice} required />
         {/if}
       </div>
     </div>

@@ -123,8 +123,8 @@
             <td>{new Date(purch.dateTime).toLocaleDateString()}</td>
             <td><strong>{purch.ingredient?.name || 'Unknown'}</strong></td>
             <td>{Number(purch.quantity).toFixed(2)} {purch.ingredient?.unit}</td>
-            <td>{Number(purch.unitPrice).toFixed(2)}</td>
-            <td><strong>{Number(purch.totalCost).toFixed(2)}</strong></td>
+            <td>{Math.round(Number(purch.unitPrice))}</td>
+            <td><strong>{Math.round(Number(purch.totalCost))}</strong></td>
             <td><span class="badge badge-blue">{purch.paymentMethod}</span></td>
             <td style="color: var(--text-secondary);">{purch.comments || '—'}</td>
           </tr>
