@@ -13,8 +13,8 @@ export interface Purchase {
   ingredient?: Ingredient;
   dateTime: string;
   quantity: number;
-  unitPrice: number;
-  totalCost: number;
+  unitPrice: number; // integer (int4)
+  totalCost: number; // integer (int4)
   paymentMethod: string;
   comments?: string;
 }

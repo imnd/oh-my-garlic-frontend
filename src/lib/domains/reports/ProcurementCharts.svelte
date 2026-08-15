@@ -12,17 +12,17 @@
     <div class="analytics-charts-grid">
       {#each analyticsData as ing}
         {#if ing.history.length > 1}
-          {@const prices = ing.history.map((h: { unitPrice: number }) => h.unitPrice)}
+          {@const prices = ing.history.map((h) => h.unitPrice)}
           {@const maxPrice = Math.max(...prices) * 1.15}
           {@const minPrice = Math.min(...prices) * 0.85}
           {@const width = 400}
           {@const height = 150}
-          {@const points = ing.history.map((h: { unitPrice: number; dateTime: string }, i: number) => {
+          {@const points = ing.history.map((h, i) => {
             const x = 40 + (i / (ing.history.length - 1)) * (width - 50);
             const y = height - 25 - ((h.unitPrice - minPrice) / (maxPrice - minPrice)) * (height - 35);
             return { x, y, price: h.unitPrice, date: new Date(h.dateTime).toLocaleDateString() };
           })}
-          {@const pathD = points.map((p: { x: number; y: number }, i: number) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ')}
+          {@const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ')}
           <div class="chart-wrapper glass-card">
             <h4>{ing.name} ({ing.unit})</h4>
             
@@ -33,9 +33,9 @@
               <line x1="40" y1={height - 25} x2={width - 10} y2={height - 25} stroke="rgba(255,255,255,0.1)" />
               
               <!-- Y Axis Labels -->
-              <text x="5" y="15" fill="var(--text-muted)" font-size="9">₹{maxPrice.toFixed(1)}</text>
-              <text x="5" y={height / 2 + 3} fill="var(--text-muted)" font-size="9">₹{((maxPrice + minPrice) / 2).toFixed(1)}</text>
-              <text x="5" y={height - 21} fill="var(--text-muted)" font-size="9">₹{minPrice.toFixed(1)}</text>
+              <text x="5" y="15" fill="var(--text-muted)" font-size="9">₹{Math.round(maxPrice)}</text>
+              <text x="5" y={height / 2 + 3} fill="var(--text-muted)" font-size="9">₹{Math.round((maxPrice + minPrice) / 2)}</text>
+              <text x="5" y={height - 21} fill="var(--text-muted)" font-size="9">₹{Math.round(minPrice)}</text>
 
               <!-- Plot path -->
               <path d={pathD} fill="none" stroke="var(--accent-secondary)" stroke-width="2" />
@@ -43,7 +43,7 @@
               <!-- Dots & tooltips -->
               {#each points as pt}
                 <circle cx={pt.x} cy={pt.y} r="4" fill="var(--accent-primary)">
-                  <title>{pt.date}: ₹{pt.price.toFixed(2)}</title>
+                  <title>{pt.date}: ₹{Math.round(pt.price)}</title>
                 </circle>
               {/each}
             </svg>
